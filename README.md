@@ -6,7 +6,57 @@ It reads one or more CSV or Excel statement files, keeps only transactions insid
 
 The script does not write a new output file. It prints the report in the terminal.
 
-You can also use a coding AI agent to run this script for you. First, download and prepare your own bank or credit-card statement files, and design a `category.md` file that matches your family's income and spending patterns. The provided `category.md` is only an example for one family, so it should not be reused without revision. After those files are ready, you can ask the agent in normal language, for example: `Please run money_helper.py for March 2026 using all CSV files, my category.md file, and print_mode 0.` Do not ask an AI agent to log in to financial websites or download statement files for you.
+## How To Use This Project
+
+First, download this project to your local computer.
+
+Open your terminal window, find or create an empty folder where you want to keep this project, and type:
+
+```bash
+git clone https://github.com/XipingGong/money_helper.git
+cd money_helper
+```
+
+Next, download your own statement files from your bank, credit-card, brokerage, or payroll websites. Save those files on your local computer, preferably in the same folder as `money_helper.py`.
+
+Then, prepare your own `category.md`. The provided `category.md` is only an example for one family. You should revise it so the income names, bills, stores, schools, subscriptions, transfers, and other categories match your own family. When you run `money_helper.py`, the script reads each transaction row and compares the row text with the rules in `category.md`. If a transaction matches one category rule, that transaction is counted in that category. If it does not match any named category, it is counted under `Others`.
+
+After the project, statement files, and `category.md` are ready, you have two ways to use this tool.
+
+### Option 1: Use Python Yourself
+
+If you want to run the script yourself, read the sections below and use a command like this:
+
+```bash
+# You need to determine "your_input_statements.csv", dates, etc.
+python money_helper.py -i "your_input_statements.csv" --start_date "2026-03-01" --end_date "2026-03-31" --category category.md --print_mode 0
+```
+
+This is the direct Python workflow. You control the command, date range, input files, category file, and print mode.
+
+### Option 2: Use A Coding AI Agent
+
+You can also ask a coding AI agent to help run the script, explain the output, or improve `category.md`.
+
+To do this:
+
+1. Install or open the coding AI agent tool you want to use.
+2. Open your terminal.
+3. Go to this project directory with `cd money_helper`.
+4. Start or open the coding AI agent window in this directory.
+5. Talk to the coding AI agent in normal language.
+
+Example request:
+
+```text
+Please run money_helper.py for March 2026 using all CSV files in this folder, my category.md file, and print_mode 0. Then explain the final summary.
+```
+
+Another useful request:
+
+```text
+Please run money_helper.py with --print Others and suggest how I should update category.md. Do not change my statement files.
+```
 
 ## What This Script Is Used For
 
